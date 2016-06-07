@@ -1,0 +1,17 @@
+.main-title{
+  font-size:65px;
+  text-align:center;
+}
+
+.main-title small{
+  font-size:25px;
+  display:block;
+}
+
+.artist-input{
+  width:75%;
+  display:block;
+  margin:25px auto;
+  height:65px;
+  font-size:30px;
+}
