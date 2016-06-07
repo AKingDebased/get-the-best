@@ -15,3 +15,29 @@
   height:65px;
   font-size:30px;
 }
+
+.tracks{
+  text-align:center;
+
+}
+.tracks span{
+  margin:0px 25px;
+}
+
+.tracks .track-control{
+  padding:6px;
+  padding-left:8px;
+  box-sizing:border-box;
+}
+
+.tracks .track-control:hover{
+  border-radius:100%;
+  border:1px solid black;
+  color:grey;
+  border-color:grey;
+}
+
+.tracks .track-control:active{
+  color:darkgrey;
+  border-color:darkgrey;
+}

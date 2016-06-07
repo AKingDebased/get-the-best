@@ -5,7 +5,7 @@
   <title>get the best</title>
 
   <link rel="stylesheet" href="css/libraries/animate.css">
-  <link rel="stylesheet" href="css/libraries/bootstrap.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <link rel="stylesheet" href="css/styles.css">
 
@@ -19,7 +19,8 @@
 
       <input type="text" class="form-control artist-input" placeholder="enter an artist's name...">
     </div>
-    <div class="results"></div>
+    <div class="results">
+    </div>
   </div>
 
 
@@ -27,6 +28,15 @@
   <div class="search">
   </div>
   <div class="results"></div>
+  </script>
+
+  <script type="template" id="results">
+  <table class="table table-hover tracks">
+  </table>
+  </script>
+
+  <script type="template" id="track">
+  <tr><td><span class="title"><%= name %></span> - <span class="album"><%= album %></span><span class="glyphicon glyphicon-play track-control"></span></td></tr>
   </script>
 
   <script src="js/libraries/jquery-1.12.4.js"></script>
@@ -38,6 +48,8 @@
   <script src="js/views/HomeLayout.js"></script>
   <script src="js/routers/MainRouter.js"></script>
   <script src="js/views/Search.js"></script>
+  <script src="js/views/Results.js"></script>
+  <script src="js/views/Track.js"></script>
   <script src="js/getTheBest.js"></script>
 </body>
 </html>
