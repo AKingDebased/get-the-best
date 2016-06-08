@@ -1,4 +1,4 @@
-var getTheBest = getTheBest || {};
+var getTheBest = getTheBest || new Marionette.Application();
 getTheBest.views = getTheBest.views || {};
 getTheBest.routers = getTheBest.routers || {};
 getTheBest.controllers = getTheBest.controllers || {};
@@ -6,8 +6,12 @@ getTheBest.controllers = getTheBest.controllers || {};
 (function(){
   "use strict";
 
-  getTheBest.routers.mainRouter = new getTheBest.routers.MainRouter();
-  Backbone.history.start();
+  getTheBest.on("start",function(){
+    getTheBest.routers.mainRouter = new getTheBest.routers.MainRouter();
+    Backbone.history.start();
 
-  getTheBest.views.homeLayout = new getTheBest.views.HomeLayout();
+    getTheBest.views.homeLayout = new getTheBest.views.HomeLayout();
+  });
+
+  getTheBest.start();
 })();

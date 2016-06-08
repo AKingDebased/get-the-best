@@ -1,4 +1,4 @@
-var getTheBest = getTheBest || {};
+var getTheBest = getTheBest || new Marionette.Application();
 getTheBest.views = getTheBest.views || {};
 getTheBest.routers = getTheBest.routers || {};
 getTheBest.controllers = getTheBest.controllers || {};

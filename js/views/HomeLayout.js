@@ -1,4 +1,4 @@
-var getTheBest = getTheBest || {};
+var getTheBest = getTheBest ||new Marionette.Application();
 getTheBest.views = getTheBest.views || {};
 getTheBest.routers = getTheBest.routers || {};
 getTheBest.controllers = getTheBest.controllers || {};
@@ -14,8 +14,10 @@ getTheBest.controllers = getTheBest.controllers || {};
       results: ".results"
     },
     initialize:function(){
-      console.log("i'm up");
+      this.render();
+      
       this.showChildView("search",new getTheBest.views.Search());
+      this.showChildView("results",new getTheBest.views.Results());
     }
   });
 })();

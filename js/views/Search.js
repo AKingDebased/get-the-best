@@ -1,4 +1,5 @@
-var getTheBest = getTheBest || {};
+var getTheBest = getTheBest || new Marionette.Application();
+getTheBest.collections = getTheBest.collections || {};
 getTheBest.views = getTheBest.views || {};
 getTheBest.routers = getTheBest.routers || {};
 getTheBest.controllers = getTheBest.controllers || {};
@@ -16,6 +17,7 @@ getTheBest.controllers = getTheBest.controllers || {};
     },
     searchArtist:function(event){
       if(event.keyCode === 13){
+        //acquire artist id, then search top tracks using id
         $.ajax({
           method:"GET",
           url:"https://api.spotify.com/v1/search",
@@ -33,13 +35,26 @@ getTheBest.controllers = getTheBest.controllers || {};
               country:"US"
             }
           }).then(function(topTracks){
-            console.log(topTracks);
+            //create new tracks collection
+            //ensure models only have required data
+            var tracks = new getTheBest.collections.Tracks();
+
+            topTracks.tracks.forEach(function(topTrack){
+              tracks.add({
+                name:topTrack.name,
+                album:topTrack.album.name,
+                previewUrl:topTrack.preview_url
+              })
+            });
+
+            getTheBest.vent.trigger("receivedTracks",tracks);
           },function(err){
             console.log("error with artist id",err);
           });
         },function(err){
           console.log("error with artist",err);
         });
+        this.ui.input.val("");
       }
     }
   });

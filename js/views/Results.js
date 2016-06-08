@@ -1,4 +1,4 @@
-var getTheBest = getTheBest || {};
+var getTheBest = getTheBest || new Marionette.Application();
 getTheBest.views = getTheBest.views || {};
 getTheBest.routers = getTheBest.routers || {};
 getTheBest.controllers = getTheBest.controllers || {};
@@ -6,9 +6,15 @@ getTheBest.controllers = getTheBest.controllers || {};
 (function(){
   "use strict";
 
-  getTheBest.views.Results = Marionette.CompositeView.extend({
-    template:"#results",
+  getTheBest.views.Results = Marionette.CollectionView.extend({
     childView:getTheBest.views.Track,
-    childViewContainer:".tracks"
+    initialize:function(){
+      var self = this;
+
+      this.listenTo(getTheBest.vent,"receivedTracks",function(topTracks){
+        self.collection = topTracks;
+        self.render();
+      });
+    }
   });
 })();

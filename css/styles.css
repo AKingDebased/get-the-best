@@ -21,23 +21,19 @@
 
 }
 .tracks span{
-  margin:0px 25px;
+  margin:0px 15px;
 }
 
 .tracks .track-control{
-  padding:6px;
-  padding-left:8px;
-  box-sizing:border-box;
+  position:relative;
+  top:7px;
+  font-size:25px;
 }
 
 .tracks .track-control:hover{
-  border-radius:100%;
-  border:1px solid black;
   color:grey;
-  border-color:grey;
 }
 
 .tracks .track-control:active{
   color:darkgrey;
-  border-color:darkgrey;
 }

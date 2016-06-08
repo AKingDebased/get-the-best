@@ -13,16 +13,8 @@
 </head>
 <body>
   <div class="container get-the-best">
-    <div class="search">
-      <h1 class="main-title">only the best<small>the best, the best, the best of tunes</small></h1>
 
-
-      <input type="text" class="form-control artist-input" placeholder="enter an artist's name...">
-    </div>
-    <div class="results">
-    </div>
   </div>
-
 
   <script type="template" id="home-layout">
   <div class="search">
@@ -36,7 +28,7 @@
   </script>
 
   <script type="template" id="track">
-  <tr><td><span class="title"><%= name %></span> - <span class="album"><%= album %></span><span class="glyphicon glyphicon-play track-control"></span></td></tr>
+  <%= name %> - <%= album %> <span class="glyphicon glyphicon-play-circle track-control"></span>
   </script>
 
   <script src="js/libraries/jquery-1.12.4.js"></script>
@@ -45,11 +37,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.marionette/2.5.6/backbone.marionette.min.js"></script>
 
   <script src="js/controllers/mainController.js"></script>
+  <script src="js/models/Track.js"></script>
+  <script src="js/collections/Tracks.js"></script>
   <script src="js/views/HomeLayout.js"></script>
   <script src="js/routers/MainRouter.js"></script>
   <script src="js/views/Search.js"></script>
-  <script src="js/views/Results.js"></script>
   <script src="js/views/Track.js"></script>
+  <script src="js/views/Results.js"></script>
   <script src="js/getTheBest.js"></script>
 </body>
 </html>
