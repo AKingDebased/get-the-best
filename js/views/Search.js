@@ -16,13 +16,14 @@ getTheBest.controllers = getTheBest.controllers || {};
       "keydown @ui.input":"searchArtist"
     },
     searchArtist:function(event){
+      var searchedArtist = event.target.value;
       if(event.keyCode === 13){
         //acquire artist id, then search top tracks using id
         $.ajax({
           method:"GET",
           url:"https://api.spotify.com/v1/search",
           data:{
-            q:event.target.value,
+            q:searchedArtist,
             type:"artist"
           }
         }).then(function(artistData){
@@ -48,6 +49,7 @@ getTheBest.controllers = getTheBest.controllers || {};
             });
 
             getTheBest.vent.trigger("receivedTracks",tracks);
+            getTheBest.routers.mainRouter.navigate(searchedArtist,{trigger:false});
           },function(err){
             console.log("error with artist id",err);
           });

@@ -7,6 +7,17 @@ getTheBest.controllers = getTheBest.controllers || {};
   "use strict";
 
   getTheBest.views.Track = Marionette.ItemView.extend({
-    template:"#track"
+    template:"#track",
+    audio:document.querySelector("audio"),
+    ui:{
+      control:".control"
+    },
+    events:{
+      "click .control":"playPause"
+    },
+    playPause:function(){
+      this.audio.src = this.model.get("previewUrl");
+      this.audio.play();
+    }
   });
 })();

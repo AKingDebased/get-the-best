@@ -8,6 +8,7 @@
   display:block;
 }
 
+/* search */
 .artist-input{
   width:75%;
   display:block;
@@ -16,24 +17,21 @@
   font-size:30px;
 }
 
-.tracks{
-  text-align:center;
-
-}
+/* tracks */
 .tracks span{
-  margin:0px 15px;
+  margin-right:40px;
 }
 
-.tracks .track-control{
+.tracks .control{
   position:relative;
   top:7px;
   font-size:25px;
 }
 
-.tracks .track-control:hover{
+.tracks .control:hover{
   color:grey;
 }
 
-.tracks .track-control:active{
+.tracks .control:active{
   color:darkgrey;
 }

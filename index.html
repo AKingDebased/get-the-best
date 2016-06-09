@@ -15,20 +15,17 @@
   <div class="container get-the-best">
 
   </div>
+  <audio></audio>
 
+  <!-- templates -->
   <script type="template" id="home-layout">
   <div class="search">
   </div>
   <div class="results"></div>
   </script>
 
-  <script type="template" id="results">
-  <table class="table table-hover tracks">
-  </table>
-  </script>
-
   <script type="template" id="track">
-  <%= name %> - <%= album %> <span class="glyphicon glyphicon-play-circle track-control"></span>
+  <span><%= name %></span><span><%= album %></span><span class="glyphicon glyphicon-play-circle control"></span>
   </script>
 
   <script src="js/libraries/jquery-1.12.4.js"></script>

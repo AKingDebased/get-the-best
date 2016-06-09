@@ -7,6 +7,9 @@ getTheBest.controllers = getTheBest.controllers || {};
   "use strict";
 
   getTheBest.views.Results = Marionette.CollectionView.extend({
+    attributes:{
+      class:"tracks"
+    },
     childView:getTheBest.views.Track,
     initialize:function(){
       var self = this;
