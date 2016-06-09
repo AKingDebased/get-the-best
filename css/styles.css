@@ -1,3 +1,17 @@
+/* general */
+*{
+  font-family: 'Raleway', sans-serif;
+  font-size:24px;
+  line-height:15px;
+}
+
+.artist-input, .results{
+  width:75%;
+  margin:0 auto;
+}
+
+
+/* header */
 .main-title{
   font-size:65px;
   text-align:center;
@@ -8,24 +22,35 @@
   display:block;
 }
 
+@media (max-width: 360px) {
+  .main-title {
+    font-size:55px;
+  }
+
+  .main-title small{
+    font-size:20px;
+  }
+}
+
 /* search */
 .artist-input{
-  width:75%;
   display:block;
   margin:25px auto;
   height:65px;
   font-size:30px;
 }
 
-/* tracks */
-.tracks span{
-  margin-right:40px;
+@media (max-width: 360px) {
+  .artist-input{
+    height:45px;
+    font-size:20px;
+  }
 }
 
+/* tracks */
 .tracks .control{
-  position:relative;
-  top:7px;
-  font-size:25px;
+  float:right;
+  font-size:20px;
 }
 
 .tracks .control:hover{
@@ -34,4 +59,24 @@
 
 .tracks .control:active{
   color:darkgrey;
+}
+
+.tracks .album{
+  font-size:16px;
+  color:grey;
+}
+
+.tracks .play-anim{
+  margin-left:5px;
+  width:30px;
+}
+
+@media (max-width: 360px) {
+  .tracks .name{
+    font-size:18px;
+  }
+
+  .tracks .album{
+    font-size:14px;
+  }
 }

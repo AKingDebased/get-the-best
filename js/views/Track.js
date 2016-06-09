@@ -16,8 +16,14 @@ getTheBest.controllers = getTheBest.controllers || {};
       "click .control":"playPause"
     },
     playPause:function(){
-      this.audio.src = this.model.get("previewUrl");
-      this.audio.play();
+      if(this.audio.paused){
+        if(!this.audio.src){
+          this.audio.src = this.model.get("previewUrl");
+        }
+        this.audio.play();
+      } else {
+        this.audio.pause();
+      }
     }
   });
 })();
