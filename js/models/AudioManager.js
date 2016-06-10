@@ -14,12 +14,15 @@ getTheBest.models = getTheBest.models || {};
       this.player = $("<audio>").appendTo("body")[0];
 
       this.player.addEventListener("play",function(){
-        // getTheBest.vent.trigger();
-        console.log("playing");
+        getTheBest.vent.trigger("playing");
       })
 
       this.player.addEventListener("pause",function(){
-        console.log("paused")
+        getTheBest.vent.trigger("paused");
+      })
+
+      this.player.addEventListener("ended",function(){
+        getTheBest.vent.trigger("ended");
       })
 
       this.listenTo(getTheBest.vent,"handleAudio",this.handleAudio)
