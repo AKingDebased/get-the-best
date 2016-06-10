@@ -11,6 +11,7 @@ getTheBest.controllers = getTheBest.controllers || {};
     Backbone.history.start();
 
     getTheBest.views.homeLayout = new getTheBest.views.HomeLayout();
+    getTheBest.models.audioManager = new getTheBest.models.AudioManager();
   });
 
   getTheBest.start();
