@@ -9,9 +9,6 @@ getTheBest.controllers = getTheBest.controllers || {};
   getTheBest.on("start",function(){
     getTheBest.routers.mainRouter = new getTheBest.routers.MainRouter();
     Backbone.history.start();
-
-    getTheBest.views.homeLayout = new getTheBest.views.HomeLayout();
-    getTheBest.models.audioManager = new getTheBest.models.AudioManager();
   });
 
   getTheBest.start();

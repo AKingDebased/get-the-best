@@ -16,48 +16,28 @@ getTheBest.controllers = getTheBest.controllers || {};
       "keydown @ui.input":"searchArtist"
     },
     searchArtist:function(event){
-      var searchedArtist = event.target.value;
       if(event.keyCode === 13){
-        //acquire artist id, then search top tracks using id
-        $.ajax({
-          method:"GET",
-          url:"https://api.spotify.com/v1/search",
-          data:{
-            q:searchedArtist,
-            type:"artist"
-          }
-        }).then(function(artistData){
-          //assuming first result is the searched artist
-          $.ajax({
-            method:"GET",
-            url:"https://api.spotify.com/v1/artists/" + artistData.artists.items[0].id + "/top-tracks",
-            data:{
-              //defaults to top US tracks
-              country:"US"
-            }
-          }).then(function(topTracks){
-            //create new tracks collection
-            //ensure models only have required data
-            var tracks = new getTheBest.collections.Tracks();
+        var searchedArtist = event.target.value;
 
-            topTracks.tracks.forEach(function(topTrack){
-              tracks.add({
-                name:topTrack.name,
-                album:topTrack.album.name,
-                previewUrl:topTrack.preview_url
-              })
-            });
+        getTheBest.getTracks(searchedArtist).then(function(topTracks){
+          console.log(topTracks)
+          //create new tracks collection
+          //ensure models only have required data
+          var tracks = new getTheBest.collections.Tracks();
 
-            getTheBest.vent.trigger("receivedTracks",tracks);
-            getTheBest.routers.mainRouter.navigate(searchedArtist,{trigger:false});
-          },function(err){
-            console.log("error with artist id",err);
+          topTracks.tracks.forEach(function(topTrack){
+            tracks.add({
+              name:topTrack.name,
+              album:topTrack.album.name,
+              previewUrl:topTrack.preview_url
+            })
           });
-        },function(err){
-          console.log("error with artist",err);
+
+          getTheBest.vent.trigger("receivedTracks",tracks);
+          getTheBest.routers.mainRouter.navigate(getTheBest.formatArtist(searchedArtist),{trigger:false});
         });
         this.ui.input.val("");
       }
     }
-  });
+  })
 })();

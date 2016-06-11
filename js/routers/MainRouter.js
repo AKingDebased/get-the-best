@@ -9,7 +9,8 @@ getTheBest.controllers = getTheBest.controllers || {};
   getTheBest.routers.MainRouter = Marionette.AppRouter.extend({
     controller:getTheBest.controllers.mainController,
     appRoutes: {
-      "": "renderHome"
+      "": "renderHome",
+      ":artist":"renderTracks"
     }
   });
 })();
