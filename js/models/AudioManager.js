@@ -9,8 +9,6 @@ getTheBest.models = getTheBest.models || {};
     initialize:function(){
       //the audio element is being used for playback control,
       //not UI, hence its presence here
-
-
       this.player = $("<audio>").appendTo("body")[0];
 
       this.player.addEventListener("play",function(){
@@ -28,19 +26,20 @@ getTheBest.models = getTheBest.models || {};
       this.listenTo(getTheBest.vent,"handleAudio",this.handleAudio)
     },
     handleAudio:function(track){
-      //click on track that is not currently playing
-      if(!track.get("currentTrack")){
+      if(!track.get("playing")){
         if(this.currentTrack){
-          this.currentTrack.set("currentTrack",false);
+          this.currentTrack.set("playing",false);
         }
         this.currentTrack = track;
-        this.currentTrack.set("currentTrack",true);
+        this.currentTrack.set("playing",true);
         this.player.src = this.currentTrack.get("previewUrl");
         this.player.play();
       } else {
         if(!this.player.paused){
+          this.currentTrack.set("playing",false);
           this.player.pause();
         } else {
+          this.currentTrack.set("playing",true);
           this.player.play();
         }
       }

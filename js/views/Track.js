@@ -11,21 +11,17 @@ getTheBest.controllers = getTheBest.controllers || {};
     initialize:function(){
       this.audio = getTheBest.models.audioManager;
 
-      this.listenTo(getTheBest.vent,"paused",this.showPause);
-      this.listenTo(getTheBest.vent,"playing",this.showPlay);
+      this.listenTo(this.model,"change",this.playPause);
     },
     template:"#track",
     ui:{
       control:".control",
       anim:".play-anim"
     },
-    showPlay:function(){
-      if(this.model.get("currentTrack")){
+    playPause:function(trackModel){
+      if(trackModel.get("playing")){
         this.ui.anim.css("display","inline-block");
-      }
-    },
-    showPause:function(){
-      if(this.model.get("currentTrack")){
+      } else {
         this.ui.anim.css("display","none");
       }
     },
