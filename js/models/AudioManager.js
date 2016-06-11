@@ -11,16 +11,11 @@ getTheBest.models = getTheBest.models || {};
       //not UI, hence its presence here
       this.player = $("<audio>").appendTo("body")[0];
 
-      this.player.addEventListener("play",function(){
-        getTheBest.vent.trigger("playing");
-      })
-
-      this.player.addEventListener("pause",function(){
-        getTheBest.vent.trigger("paused");
-      })
-
+      //listener to catch a preview playing fully
+      var self = this;
       this.player.addEventListener("ended",function(){
-        getTheBest.vent.trigger("ended");
+
+        self.currentTrack.set("playing",false);
       })
 
       this.listenTo(getTheBest.vent,"handleAudio",this.handleAudio)
