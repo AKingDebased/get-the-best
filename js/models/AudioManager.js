@@ -10,14 +10,6 @@ getTheBest.models = getTheBest.models || {};
       //the audio element is being used for playback control,
       //not UI, hence its presence here
 
-      //routing causes multiple audio tags to be created
-      //kludge fix to handle that
-
-      if($("audio")){
-        console.log("there was an audio tag");
-        $("audio").remove();
-      }
-
       this.player = $("<audio>").appendTo("body")[0];
 
       //listener to catch a preview playing fully
@@ -29,7 +21,6 @@ getTheBest.models = getTheBest.models || {};
       this.listenTo(getTheBest.vent,"handleAudio",this.handleAudio)
     },
     handleAudio:function(track){
-      console.log(track);
       if(!track.get("playing")){
         if(this.currentTrack){
           this.currentTrack.set("playing",false);

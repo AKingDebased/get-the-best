@@ -14,8 +14,15 @@ getTheBest.models = getTheBest.models || {};
     },
     renderTracks:function(artist){
       //this looks identical to the searchArtist method in the Search view
-      getTheBest.views.homeLayout = new getTheBest.views.HomeLayout();
-      getTheBest.models.audioManager = new getTheBest.models.AudioManager();
+
+      //kludge fixes to avert any zombie event listeners
+      if(!getTheBest.views.homeLayout){
+        getTheBest.views.homeLayout = new getTheBest.views.HomeLayout();
+      }
+
+      if(!getTheBest.models.audioManager){
+        getTheBest.models.audioManager = new getTheBest.models.AudioManager();
+      }
 
       var formattedArtist = getTheBest.formatArtist(artist);
       var tracks = new getTheBest.collections.Tracks();
