@@ -20,7 +20,6 @@ getTheBest.controllers = getTheBest.controllers || {};
         var searchedArtist = event.target.value;
 
         getTheBest.getTracks(searchedArtist).then(function(topTracks){
-          console.log(topTracks)
           //create new tracks collection
           //ensure models only have required data
           var tracks = new getTheBest.collections.Tracks();
